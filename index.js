@@ -19,6 +19,7 @@ const tls = require('tls');
 const path = require('path');
 const readline = require('readline');
 const net = require('net');
+var  StringDecoder = require('string_decoder').StringDecoder;
 
 
 var logger = console.log
@@ -45,6 +46,7 @@ logger("Press 18 for path");
 logger("Press 19 for QueryString Module");
 logger("Press 20 for Readline Module");
 logger("Press 21 for net Module");
+logger("Press 22 for String Decoder");
 logger("Press 0 for Exit");
 logger("*****************************")
 
@@ -133,6 +135,10 @@ switch (Number(num)) {
     
     case 21 :
         netTest();
+        break;
+
+    case 22 :
+        StringDecoderTest();
         break;
 
     case 0:
@@ -476,4 +482,14 @@ function readlineTest() {
 function netTest() {
     
    console.log('i have created separate file for it !');
+}
+
+function StringDecoderTest()
+{
+    var decode = new StringDecoder('utf8');
+   // var buffer = Buffer('semicolon');
+   var buffer = Buffer.from('semicolon is best packed with features packed with technology packed with security');
+
+    console.log(buffer);
+    console.log(decode.write(buffer));
 }
