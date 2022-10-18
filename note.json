@@ -1,10 +1,1 @@
-[
-    {
-        "title": "title defined",
-        "body": "body define"
-    },
-    {
-        "title": "i Am Tital",
-        "body": "And I Am Body"
-    }
-]
+[{"title":"Java","body":"Spring,Springboot,Hibernet"},{"title":"JavaScript","body":"Nodejs,ExpressJS,D3js,Nextjs,Vue.js,ReactJs"}]

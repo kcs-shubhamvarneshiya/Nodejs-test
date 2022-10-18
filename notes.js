@@ -17,16 +17,25 @@ const readNotes = function (title) {
 
     try {
         const Data = fs.readFileSync('./note.json', 'utf-8');
-        const obj = JSON.parse(Data);
+        var isAvailable = Data.includes(title);
 
-        var arr = [];
-        arr.push(obj)
+        if (isAvailable == true) {
+            const obj = JSON.parse(Data);
 
-        function isTitle(playload) {
-            return playload.title === title;
+            var arr = [];
+            arr.push(obj)
+
+            function isTitle(playload) {
+                return playload.title === title;
+            }
+
+            console.table(arr[0].find(isTitle))
         }
-
-        console.table(arr[0].find(isTitle))
+        else {
+            console.log('Could not find '.yellow.bold + `${title}`.red.inverse.bold + ' as Title'.yellow.bold);
+            console.log('Please Enter valid Title'.red.bold);
+            console.info('Or Add New Notes by passing argument :'.green.bold+' add --title="<Your Title>" --body="<Your Body>"'.cyan.bold.inverse)
+        }
     }
     catch (error) {
         console.log(error.message);
@@ -109,22 +118,19 @@ const removeNotes = function (ntitle) {
         const readData = fs.readFileSync('./note.json', 'utf-8')
         const data = readData.includes(ntitle);
         var obj = JSON.parse(readData);
+
         if (data == true) {
             var arr = [];
             arr.push(obj);
 
             var finalData = arr[0].filter(rows => rows.title != ntitle)
 
-            try {
-                fs.writeFileSync('note.json', JSON.stringify(finalData));
-                console.log('Notes Removed !!'.red.bold);
-            }
-            catch (error) {
-                console.log(error.message);
-            }
+            fs.writeFileSync('note.json', JSON.stringify(finalData));
+            console.log('Notes Removed !!'.red.bold);
+
         }
         else {
-            console.log('Could not find the title'.red.bold);
+            console.log('Could not find '.yellow.bold + `${ntitle}`.red.inverse.bold + ' as title'.yellow.bold);
             console.log('Please enter valid title'.red.bold);
         }
     }
@@ -141,17 +147,10 @@ const listnotes = function () {
     console.log('listing notes ......'.green.bold);
 
     try {
-
         const data = fs.readFileSync('./note.json')
-
-        if (data == null) {
-            console.log('File is Empty !! \n please add note'.red.bold);
-        }
-        else {
-            const rawData = data.toString();
-            const objData = JSON.parse(rawData);
-            console.table(objData);
-        }
+        const rawData = data.toString();
+        const objData = JSON.parse(rawData);
+        console.table(objData);
     }
     catch (error) {
         console.log(error.message.red);
