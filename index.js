@@ -19,36 +19,39 @@ const tls = require('tls');
 const path = require('path');
 const readline = require('readline');
 const net = require('net');
-var  StringDecoder = require('string_decoder').StringDecoder;
+var StringDecoder = require('string_decoder').StringDecoder;
+var zlib = require('zlib');
 
 
 var logger = console.log
 
-logger("*****************************");
-logger("Press 1 for file system");
-logger("Press 2 for assert Module");
-logger("Press 3 for http Module");
-logger("Press 4 for crypto Module ");
-logger("Press 5 for buffer Module");
-logger("Press 6 for https Module");
-logger("Press 7 for datagram Module");
-logger("Press 8 for Color Module");
-logger("Press 9 for Custom Module");
-logger("Press 10 for dns Module");
-logger("Press 11 for console command");
-logger("Press 12 for url Module");
-logger("Press 13 for cluster Module");
-logger("Press 14 for Events ");
-logger("Press 15 for Os Module");
-logger("Press 16 for vm Module");
-logger("Press 17 for TLS ");
-logger("Press 18 for path");
-logger("Press 19 for QueryString Module");
-logger("Press 20 for Readline Module");
-logger("Press 21 for net Module");
-logger("Press 22 for String Decoder");
-logger("Press 0 for Exit");
-logger("*****************************")
+logger("*****************************".rainbow);
+logger("Press 1 for file system".yellow);
+logger("Press 2 for assert Module".yellow);
+logger("Press 3 for http Module".yellow);
+logger("Press 4 for crypto Module ".yellow);
+logger("Press 5 for buffer Module".yellow);
+logger("Press 6 for https Module".yellow);
+logger("Press 7 for datagram Module".yellow);
+logger("Press 8 for Color Module".yellow);
+logger("Press 9 for Custom Module".yellow);
+logger("Press 10 for dns Module".yellow);
+logger("Press 11 for console command".yellow);
+logger("Press 12 for url Module".yellow);
+logger("Press 13 for cluster Module".yellow);
+logger("Press 14 for Events ".yellow);
+logger("Press 15 for Os Module".yellow);
+logger("Press 16 for vm Module".yellow);
+logger("Press 17 for TLS ".yellow);
+logger("Press 18 for path".yellow);
+logger("Press 19 for QueryString Module".yellow);
+logger("Press 20 for Readline Module".yellow);
+logger("Press 21 for net Module".yellow);
+logger("Press 22 for String Decoder".yellow);
+logger("Press 23 for zlib".yellow);
+logger("Press 24 for Timer".yellow);
+logger("Press 0 for Exit".yellow);
+logger("*****************************".rainbow)
 
 var num = prompt('Enter Your Choice : ');
 
@@ -132,13 +135,21 @@ switch (Number(num)) {
     case 20:
         readlineTest();
         break;
-    
-    case 21 :
+
+    case 21:
         netTest();
         break;
 
-    case 22 :
+    case 22:
         StringDecoderTest();
+        break;
+
+    case 23:
+        zlibTest();
+        break;
+
+    case 24:
+        timerTest();
         break;
 
     case 0:
@@ -475,21 +486,40 @@ function readlineTest() {
 
     myfile.on('line', function (line) {
         lineNo++;
-        console.log('Line Number '+lineNo+' : '+line);
+        console.log('Line Number ' + lineNo + ' : ' + line);
     })
 }
 
 function netTest() {
-    
-   console.log('i have created separate file for it !');
+
+    console.log('i have created separate file for it !');
 }
 
-function StringDecoderTest()
-{
+function StringDecoderTest() {
     var decode = new StringDecoder('utf8');
-   // var buffer = Buffer('semicolon');
-   var buffer = Buffer.from('semicolon is best packed with features packed with technology packed with security');
+    // var buffer = Buffer('semicolon');
+    var buffer = Buffer.from('semicolon is best packed with features packed with technology packed with security');
 
     console.log(buffer);
     console.log(decode.write(buffer));
 }
+
+function zlibTest() {
+
+    console.log('zlib called !');
+    // var gzip = zlib.createGzip();
+    // var gzip = zlib.createInflate();
+    var read = fs.createReadStream('./try.js');
+    var write = fs.createWriteStream('./demo.js.gz');
+    read.pipe(gzip).pipe(write);
+
+    console.log('Zip file created !'.rainbow);
+}
+
+function timerTest() {
+    var myInt = setInterval(function () {
+        console.log("Hello Semicolon ; ".bgYellow.bold);
+    }, 500);
+}
+
+
