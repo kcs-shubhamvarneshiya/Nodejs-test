@@ -28,7 +28,7 @@ const readNotes = function (title) {
             function isTitle(playload) {
                 return playload.title === title;
             }
-
+            debugger
             console.table(arr[0].find(isTitle))
         }
         else {

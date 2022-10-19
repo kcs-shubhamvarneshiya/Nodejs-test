@@ -21,6 +21,7 @@ const readline = require('readline');
 const net = require('net');
 var StringDecoder = require('string_decoder').StringDecoder;
 var zlib = require('zlib');
+var util = require('util');
 
 
 var logger = console.log
@@ -50,7 +51,8 @@ logger("Press 21 for net Module".yellow);
 logger("Press 22 for String Decoder".yellow);
 logger("Press 23 for zlib".yellow);
 logger("Press 24 for Timer".yellow);
-logger("Press 25 for http2 Module")
+logger("Press 25 for http2 Module".yellow);
+logger("Press 26 for Util Module".yellow);
 logger("Press 0 for Exit".yellow);
 logger("*****************************".rainbow)
 
@@ -157,6 +159,10 @@ switch (Number(num)) {
         http2Test();
         break;
 
+    case 26:
+        utilTest();
+        break;
+
     case 0:
         console.log('Terminated!')
         loop = false;
@@ -195,7 +201,6 @@ function fileSystem() {
     // }))
 
 }
-
 
 function httpModule() {
     const PORT = 3030;
@@ -538,4 +543,20 @@ function http2Test() {
     session.on('error', (err) => console.error(err))
 }
 
+function utilTest() {
+
+    const debuglog = util.debuglog('alfa-beta');
+
+    debuglog('Hii there, debuglog from alfa-beta [%d]', 2333);
+
+    const generalLog = util.debuglog('alfa-');
+    const timerLog = util.debuglog('alfa-romeo');
+    const delay = 800;
+
+    generalLog('Leaving alfa-...');
+    console.log("Wait for timerLog...")
+    setTimeout(() => {
+        timerLog('timer fired after %d ', delay);
+    }, delay);
+}
 
