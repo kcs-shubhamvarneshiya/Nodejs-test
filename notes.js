@@ -10,14 +10,14 @@ require('colors')
  * 
  * @returns read particular node details from file 
  */
-const readNotes = function (title) {
+const readNotes = function (ntitle) {
 
     var map = new Map();
     console.log('reading Notes......'.green.bold);
 
     try {
         const Data = fs.readFileSync('./note.json', 'utf-8');
-        var isAvailable = Data.includes(title);
+        var isAvailable = Data.includes(ntitle);
 
         if (isAvailable == true) {
             const obj = JSON.parse(Data);
@@ -26,13 +26,13 @@ const readNotes = function (title) {
             arr.push(obj)
 
             function isTitle(playload) {
-                return playload.title === title;
+                return playload.title === ntitle;
             }
 
             console.table(arr[0].find(isTitle))
         }
         else {
-            console.log('Could not find '.yellow.bold + `${title}`.red.inverse.bold + ' as Title'.yellow.bold);
+            console.log('Could not find '.yellow.bold + `${ntitle}`.red.inverse.bold + ' as Title'.yellow.bold);
             console.log('Please Enter valid Title'.red.bold);
             console.info('Or Add New Notes by passing argument :'.green.bold+' add --title="<Your Title>" --body="<Your Body>"'.cyan.bold.inverse)
         }

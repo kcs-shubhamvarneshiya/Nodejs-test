@@ -19,34 +19,36 @@ const tls = require('tls');
 const path = require('path');
 const readline = require('readline');
 const net = require('net');
+const http2 = require('http2');
 
 
 var logger = console.log
 
-logger("*****************************");
-logger("Press 1 for file system");
-logger("Press 2 for assert Module");
-logger("Press 3 for http Module");
-logger("Press 4 for crypto Module ");
-logger("Press 5 for buffer Module");
-logger("Press 6 for https Module");
-logger("Press 7 for datagram Module");
-logger("Press 8 for Color Module");
-logger("Press 9 for Custom Module");
-logger("Press 10 for dns Module");
-logger("Press 11 for console command");
-logger("Press 12 for url Module");
-logger("Press 13 for cluster Module");
-logger("Press 14 for Events ");
-logger("Press 15 for Os Module");
-logger("Press 16 for vm Module");
-logger("Press 17 for TLS ");
-logger("Press 18 for path");
-logger("Press 19 for QueryString Module");
-logger("Press 20 for Readline Module");
-logger("Press 21 for net Module");
-logger("Press 0 for Exit");
-logger("*****************************")
+logger("*****************************".rainbow);
+logger("Press 1 for file system".yellow);
+logger("Press 2 for assert Module".yellow);
+logger("Press 3 for http Module".yellow);
+logger("Press 4 for crypto Module ".yellow);
+logger("Press 5 for buffer Module".yellow);
+logger("Press 6 for https Module".yellow);
+logger("Press 7 for datagram Module".yellow);
+logger("Press 8 for Color Module".yellow);
+logger("Press 9 for Custom Module".yellow);
+logger("Press 10 for dns Module".yellow);
+logger("Press 11 for console command".yellow);
+logger("Press 12 for url Module".yellow);
+logger("Press 13 for cluster Module".yellow);
+logger("Press 14 for Events ".yellow);
+logger("Press 15 for Os Module".yellow);
+logger("Press 16 for vm Module".yellow);
+logger("Press 17 for TLS ".yellow);
+logger("Press 18 for path".yellow);
+logger("Press 19 for QueryString Module").yellow;
+logger("Press 20 for Readline Module".yellow);
+logger("Press 21 for net Module".yellow);
+logger("Press 22 for Http2 Module".yellow)
+logger("Press 0 for Exit".yellow);
+logger("*****************************".rainbow)
 
 var num = prompt('Enter Your Choice : ');
 
