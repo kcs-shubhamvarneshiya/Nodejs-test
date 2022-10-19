@@ -50,6 +50,7 @@ logger("Press 21 for net Module".yellow);
 logger("Press 22 for String Decoder".yellow);
 logger("Press 23 for zlib".yellow);
 logger("Press 24 for Timer".yellow);
+logger("Press 25 for http2 Module")
 logger("Press 0 for Exit".yellow);
 logger("*****************************".rainbow)
 
@@ -150,6 +151,10 @@ switch (Number(num)) {
 
     case 24:
         timerTest();
+        break;
+
+    case 25:
+        http2Test();
         break;
 
     case 0:
@@ -520,6 +525,17 @@ function timerTest() {
     var myInt = setInterval(function () {
         console.log("Hello Semicolon ; ".bgYellow.bold);
     }, 500);
+}
+
+function http2Test() {
+
+    const http2 = require('http2')
+
+    // The `http2.connect` method creates a new session with example.com
+    const session = http2.connect('https://kcsintranet.kcsitglobal.com')
+
+    // If there is any error in connecting, log it to the console
+    session.on('error', (err) => console.error(err))
 }
 
 
