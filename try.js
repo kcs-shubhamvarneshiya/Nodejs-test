@@ -9,6 +9,7 @@
 //   remainingArr = objArr.filter(data => data.name != 'Ragnar');
 //   console.log(remainingArr);
 
+/*********************************************** */
 
 // const fs = require('fs')
 // require('colors');
@@ -27,18 +28,28 @@
 
 // console.log('end of the file')
 
-var util = require('util');
+//*************************************** */
+
+// var util = require('util');
  
-const debuglog = util.debuglog('alfa-beta');
+// const debuglog = util.debuglog('alfa-beta');
 
-    debuglog('Hii there, debuglog from alfa-beta [%d]', 2333);
+//     debuglog('Hii there, debuglog from alfa-beta [%d]', 2333);
 
-    const generalLog = util.debuglog('alfa-');
-    const timerLog = util.debuglog('alfa-romeo');
-    const delay = 800;
+//     const generalLog = util.debuglog('alfa-');
+//     const timerLog = util.debuglog('alfa-romeo');
+//     const delay = 800;
 
-    generalLog('Leaving alfa-...');
-    console.log("Wait for timerLog...")
-    setTimeout(() => {
-        timerLog('timer fired after %d ', delay);
-    }, delay);
+//     generalLog('Leaving alfa-...');
+//     console.log("Wait for timerLog...")
+//     setTimeout(() => {
+//         timerLog('timer fired after %d ', delay);
+//     }, delay);
+
+/******************** */
+// const fs = require('fs');
+
+//  const data = fs.readFileSync('something.js','utf-8');
+
+//  console.log(data);
+
