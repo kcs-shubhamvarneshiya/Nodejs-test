@@ -70,7 +70,7 @@ const addNotes = function (title, body) {
         })
 
         saveNotes(note);
-        debugger
+        // debugger
     }
     else {
         console.log('Duplicate Data Found !!'.red.bold.inverse)
@@ -87,6 +87,7 @@ const loadNote = function () {
         return JSON.parse(dataJson);
     }
     catch (e) {
+        console.log(e.message.red.bold);
         console.log('Could not find the file name !'.red.bold)
         return [];
     }
