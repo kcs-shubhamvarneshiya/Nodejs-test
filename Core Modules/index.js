@@ -517,7 +517,7 @@ function StringDecoderTest() {
 function zlibTest() {
 
     console.log('zlib called !');
-    // var gzip = zlib.createGzip();
+     var gzip = zlib.createGzip();
     // var gzip = zlib.createInflate();
     var read = fs.createReadStream('./try.js');
     var write = fs.createWriteStream('./demo.js.gz');
