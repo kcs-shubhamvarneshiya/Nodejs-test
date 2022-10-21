@@ -20,7 +20,7 @@ setInterval(() => {
             const apiResponse = response.data;
             console.log(`Current temperature in ${apiResponse}`);
         }).catch(error => {
-            console.log(error);
+            console.log(error.message);
         });
 }, 2000);
 
