@@ -420,8 +420,8 @@ function tlsTest() {
 
     // Port and host address for server	
     PORT = 1337,
-    HOST = '127.0.0.1',
-    value = null;
+        HOST = '127.0.0.1',
+        value = null;
 
     // Private key and public certificate for access
     var options = {
@@ -517,7 +517,7 @@ function StringDecoderTest() {
 function zlibTest() {
 
     console.log('zlib called !');
-     var gzip = zlib.createGzip();
+    var gzip = zlib.createGzip();
     // var gzip = zlib.createInflate();
     var read = fs.createReadStream('./try.js');
     var write = fs.createWriteStream('./demo.js.gz');
@@ -534,8 +534,6 @@ function timerTest() {
 
 function http2Test() {
 
-
-    // The `http2.connect` method creates a new session with example.com
     const session = http2.connect('https://www.youtube.com/')
 
     // If there is any error in connecting, log it to the console
@@ -543,19 +541,46 @@ function http2Test() {
 }
 
 function utilTest() {
+    // SET NODE_DEBUG=run-app*&&node index.js
+    //NODE_DEBUG=run-app* node index.js
+    const debugLog = util.debuglog('run-app');
 
-    const debuglog = util.debuglog('alfa-beta');
+    // Use debuglog() method
+    debugLog('hello from my debugger [%d]', 123);
+    // SET NODE_DEBUG=run-app&&node util.js
 
-    debuglog('Hii there, debuglog from alfa-beta [%d]', 2333);
+    // Another way to import debuglog
+    const { debuglog } = require('util');
 
-    const generalLog = util.debuglog('alfa-');
-    const timerLog = util.debuglog('alfa-romeo');
-    const delay = 800;
+    const debuglogue = debuglog('run-app1');
 
-    generalLog('Leaving alfa-...');
-    console.log("Wait for timerLog...")
-    setTimeout(() => {
-        timerLog('timer fired after %d ', delay);
-    }, delay);
+    // Use debuglog() method
+    debuglogue('hello from run-app [%d]', 123);
+
+    var a = "old Value";
+
+    let deebuglog = util.debuglog('run-app2',
+        (debuging) => {
+
+            // Replace with a logging function
+            // that optimizes out
+            a = "new Value";
+
+            // Testing if the section is enabled
+            deebuglog = debuging;
+        });
+
+    // prints the debuglog function
+    console.log(util.inspect(deebuglog,
+        showHidden = true, compact = true));
+
+    // Prints nothing
+    console.log(a);
+
+    // logs app *
+    deebuglog();
+
+    deebuglog('hi there, it\'s run-app [%d]', 2333);
+
 }
 

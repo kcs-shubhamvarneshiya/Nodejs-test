@@ -53,3 +53,47 @@
 
 //  console.log(data);
 
+// Node.js program to demonstrate the
+// util.debuglog() method
+
+// Using require to access util module
+const util = require('util');
+
+const debugLog = util.debuglog('run-app');
+
+// Use debuglog() method
+debugLog('hello from my debugger [%d]', 123);
+// SET NODE_DEBUG=run-app&&node util.js
+
+// Another way to import debuglog
+const { debuglog } = require('util');
+
+const debuglogue = debuglog('run-app1');
+
+// Use debuglog() method
+debuglogue('hello from run-app [%d]', 123);
+
+var a = "old Value";
+
+let deebuglog = util.debuglog('run-app2',
+	(debuging) => {
+
+		// Replace with a logging function
+		// that optimizes out
+		a = "new Value";
+
+		// Testing if the section is enabled
+		deebuglog = debuging;
+	});
+
+// prints the debuglog function
+console.log(util.inspect(deebuglog,
+	showHidden = true, compact = true));
+
+// Prints nothing
+console.log(a);
+
+// logs app *
+deebuglog();
+
+deebuglog('hi there, it\'s run-app [%d]', 2333);
