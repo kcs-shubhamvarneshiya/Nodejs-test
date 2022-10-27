@@ -419,8 +419,8 @@ function tlsTest() {
 
     // Port and host address for server	
     PORT = 1337,
-        HOST = '127.0.0.1',
-        value = null;
+    HOST = '127.0.0.1',
+    value = null;
 
     // Private key and public certificate for access
     var options = {
@@ -445,8 +445,7 @@ function tlsTest() {
         });
     });
 
-    // Start listening on a specific port and address
-    // by using listen() method
+
     server.listen(PORT, HOST, function () {
         console.log("I'm listening at %s, on port %s", HOST, PORT);
     });
@@ -457,7 +456,7 @@ function tlsTest() {
 
         // Setting maximum send fragment limit
         // by using tlsSocket.setMaxSendFragment() method
-        value = client.setMaxSendFragment(16384);
+        value = client.setMaxSendFragment(16000);
 
         if (value)
             client.write("tls fragment is set");
