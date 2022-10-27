@@ -22,6 +22,7 @@ const net = require('net');
 var StringDecoder = require('string_decoder').StringDecoder;
 var zlib = require('zlib');
 var util = require('util');
+var http2 = require('http2');
 
 
 var logger = console.log
@@ -533,13 +534,12 @@ function timerTest() {
 
 function http2Test() {
 
-    const http2 = require('http2')
 
     // The `http2.connect` method creates a new session with example.com
-    const session = http2.connect('https://kcsintranet.kcsitglobal.com')
+    const session = http2.connect('https://www.youtube.com/')
 
     // If there is any error in connecting, log it to the console
-    session.on('error', (err) => console.error(err))
+    session.on('error', (err) => console.error(err.message))
 }
 
 function utilTest() {
