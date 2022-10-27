@@ -507,8 +507,8 @@ function netTest() {
 
 function StringDecoderTest() {
     var decode = new StringDecoder('utf8');
-    // var buffer = Buffer('semicolon');
-    var buffer = Buffer.from('semicolon is best packed with features packed with technology packed with security');
+     var buffer = Buffer('semicolon');
+    //var buffer = Buffer.from('semicolon is best packed with features packed with technology packed with security');
 
     console.log(buffer);
     console.log(decode.write(buffer));
