@@ -44,14 +44,6 @@ require('colors');
 //===================================================
 const request = require('request');
 
-// const parameters = {
-//     method: 'GET',
-//     url: 'https://open-weather13.p.rapidapi.com/city/Ahmedabad',
-//     headers: {
-//         'X-RapidAPI-Key': 'b13f669373msh837a90750215d5cp1e104ejsna8455c0b2a7d',
-//         'X-RapidAPI-Host': 'open-weather13.p.rapidapi.com'
-//     }
-// };
 const access_key = 'c592cc3c9c5cb7e8cb953ebb6d85168f'
 const location = 'morbi'
 
@@ -76,7 +68,7 @@ request({ uri: url, json: true }, function (error, response) {
                 msg = 'its Rainy day, i need to order Rain coat'.blue
                 break;
             case 107:
-                msg = 'Look at here , its snowfoll how beautifull it is !!!'.blue
+                msg = 'Look at here , its snowfall how beautifull it is !!!'.blue
                 break;
             case 113:
                 msg = 'its freezing rain , i need to order sweater'.blue
@@ -88,10 +80,9 @@ request({ uri: url, json: true }, function (error, response) {
                 msg = 'sorry i dont have proper message for this weather code'.red
                 break;
         }
+
         console.log('Hy bro !, Currently temperature at '.yellow
             + Api.location.name + ' is '.yellow + Api.current.temperature +
             ' C ' + msg);
-
-
     }
 });
