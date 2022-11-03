@@ -8,7 +8,7 @@ class Cricket {
             method: 'GET',
             url: 'https://cricbuzz-cricket.p.rapidapi.com/teams/v1/international',
             headers: {
-                'X-RapidAPI-Key': 'b13f669373msh837a90750215d5cp1e',
+                'X-RapidAPI-Key': 'b13f669373msh837a90750215d5cp1e104ejsna8455c0b2a7d',
                 'X-RapidAPI-Host': 'cricbuzz-cricket.p.rapidapi.com'
             }
         }
@@ -17,6 +17,7 @@ class Cricket {
             result(null, response.data)
         }).catch((error) => {
 
+            //console.log(error)
             if (error.code == 'ENOTFOUND') {
                 result((error, { errorMsg: 'Connection_fail' }))
             }

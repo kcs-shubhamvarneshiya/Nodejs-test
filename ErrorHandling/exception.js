@@ -17,7 +17,7 @@ cricketApi.getPlayerData((err, rows) => {
             console.log('Connection time out , Please check your internet connection !!'.red.bold);
         }
         else {
-            console.log('Something went wrong , Please Try again !'.red.bold);
+            console.log('Invalid Field type Please check !!'.red.bold);
         }
     }
     else {
