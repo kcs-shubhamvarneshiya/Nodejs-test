@@ -7,17 +7,17 @@ const axios = require('axios')
  * @param {*} result pass the response (error,response payload)
  */
 const forcast = (long, lat, result) => {
-
+    
     const parameters = {
         method: 'GET',
-        url: 'https://weatherbit-v1-mashape.p.rapidapi.com/current',
+        url: 'https://weatherbit-v1-mashape.p.rapidapi.com/forecast/daily',
         params:
         {
             lon: long,
             lat: lat
         },
         headers: {
-            'X-RapidAPI-Key': 'a90750215d5cp1e104ejsna8455c0b2a7d',
+            'X-RapidAPI-Key': '8da5ce8974msh17f0d8afc07ea5fp165032jsna6a7ac3631fc',
             'X-RapidAPI-Host': 'weatherbit-v1-mashape.p.rapidapi.com'
         }
     }

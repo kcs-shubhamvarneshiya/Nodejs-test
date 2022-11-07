@@ -3,7 +3,7 @@ const request = require("request");
 
 const Getlocation = (address, data) => {
     const parameter = address;
-    
+
     const param = data
     const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${parameter}.json?access_token=pk.eyJ1Ijoic2h1YmhhbXY0NTI0IiwiYSI6ImNsOXpmY2cwcTAwMHUzdXBlY3ppbHd6cXMifQ.PMiIpq8nNL741csoDX4oKg&limit=1`
 
