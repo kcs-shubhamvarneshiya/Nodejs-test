@@ -22,17 +22,17 @@ yargs.command({
                 forcast(result.lattitude, result.longitude, (err, resp) => {
                     if (err) {
                         if (err.errorMsg == 'Invalid_Host') {
-                            console.log('Invalid host name , Please check !');
+                            console.log('Invalid host name , Please check !'.red.bold);
                         }
                         else if (err.errorMsg == 'Invalid_Key') {
-                            console.log('Invalid Access key , Please check !')
+                            console.log('Invalid Access key , Please check !'.red.bold)
                         }
                         else if (err.errorMsg == 'Internet_connection') {
-                            console.log('Could not Connect , Please check your internet connection !!')
+                            console.log('Could not Connect , Please check your internet connection !!'.red.bold)
                         }
                         else {
 
-                            console.log('Something went wrong !!!')
+                            console.log('Something went wrong !!!'.red.bold)
                         }
                     }
                     else {
@@ -42,9 +42,9 @@ yargs.command({
                             Description: resp.data[0].weather.description,
                             UV_Index: resp.data[0].uv
                         }
-                        console.log('Average Temprature is : '.yellow + res.Average_Temprature +
-                            "\nDescription is : ".yellow + res.Description +
-                            "\nUv Index is : ".yellow + res.UV_Index)
+                        console.log('Average Temprature is : '.yellow.bold + res.Average_Temprature +
+                            "\nDescription is : ".yellow.bold + res.Description +
+                            "\nUv Index is : ".yellow.bold + res.UV_Index)
                     }
                 })
             }
