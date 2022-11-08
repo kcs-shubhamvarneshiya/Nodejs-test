@@ -1,4 +1,5 @@
 const request = require("request");
+require('colors')
 
 
 const Getlocation = (address, data) => {
@@ -11,7 +12,7 @@ const Getlocation = (address, data) => {
         if (error) {
 
             if (error.code == 'ENOTFOUND') {
-                param((error, { errorMsg: 'Internet_Connection' }))
+                param((error, { errorMsg: 'Could not reach , Please check your internet connection !!'.red.bold}))
             }
             else {
                 param(error.message)
@@ -22,10 +23,10 @@ const Getlocation = (address, data) => {
             const res = response.body;
 
             if (res.message == 'Not Authorized - Invalid Token') {
-                data((error, { errorMsg: 'Invalid_Token' }))
+                data((error, { errorMsg: 'Invalid Authorized Token , Please check !!'.red.bold }))
             }
             else if (res.features[0] == null) {
-                data((error, { errorMsg: 'Empty_Fields' }))
+                data((error, { errorMsg: 'Could not fetch data from given location !!'.red.bold }))
             }
             else {
                 const details = {

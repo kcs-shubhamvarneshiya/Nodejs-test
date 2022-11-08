@@ -1,4 +1,5 @@
 const axios = require('axios')
+require('colors')
 
 /**
  * 
@@ -7,17 +8,18 @@ const axios = require('axios')
  * @param {*} result pass the response (error,response payload)
  */
 const forcast = (long, lat, result) => {
-    
+
+
     const parameters = {
         method: 'GET',
         url: 'https://weatherbit-v1-mashape.p.rapidapi.com/forecast/daily',
         params:
         {
-            lon: long,
-            lat: lat
+            lat: lat,
+            lon: long
         },
         headers: {
-            'X-RapidAPI-Key': '8da5ce8974msh17f0d8afc07ea5fp165032jsna6a7ac3631fc',
+            'X-RapidAPI-Key': '39ee93099amsh90a94bf48362163p15e903jsnc3338d887776',
             'X-RapidAPI-Host': 'weatherbit-v1-mashape.p.rapidapi.com'
         }
     }
@@ -28,19 +30,23 @@ const forcast = (long, lat, result) => {
 
         //If there is a problem with internet connection
         if (error.code == 'ENOTFOUND') {
-            result((error, { errorMsg: 'Internet_connection' }))
+            result((error, { errorMsg: 'Could not reach , Please check your internet connection '.red.bold }), null)
         }
         //If user enter Invalid AccessKey
         else if (error.code == 'ERR_BAD_REQUEST' && error.response.status == 400) {
-            result((error, { errorMsg: 'Invalid_Host' }))
+            result((error, { errorMsg: 'Invalid Host name , Please check !!'.red.bold }), null)
         }
         //If user enter Invalid Accesskey
         else if (error.code == 'ERR_BAD_REQUEST' && error.response.status == 403) {
-            result((error, { errorMsg: 'Invalid_Key' }))
+            result((error, { errorMsg: 'Invalid Access key , Please check !!'.red.bold }), null)
+        }
+        //If Montly subscription is expired 
+        else if (error.code == 'ERR_BAD_REQUEST' && error.response.status == 429) {
+            result((error, { errorMsg: 'Your Free Api usege is end , Please upgrade your plan !!'.red.bold }))
         }
         //If any other error would be occure that will be handle here..
         else {
-            result(error)
+            result(error.message)
         }
     })
 
