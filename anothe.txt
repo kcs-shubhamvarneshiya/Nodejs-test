@@ -1,1 +1,2 @@
 another text file with semicolon
+changes made
