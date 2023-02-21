@@ -1,1 +1,2 @@
 hello semicolon
+another testing semicolon
