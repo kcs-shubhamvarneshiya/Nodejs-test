@@ -1,2 +1,4 @@
-hello semicolon
-another testing semicolon
+hello world 
+i am thanos 
+i am the strongest one
+i am inevitable
