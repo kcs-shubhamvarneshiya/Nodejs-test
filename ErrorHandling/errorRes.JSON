@@ -1,0 +1,50 @@
+for not connected with internet connection 
+
+  code: 'ENOTFOUND',
+  errno: -3008,
+  
+  cause: Error: getaddrinfo ENOTFOUND cricbuzz-cricket.p.rapidapi.com
+      at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:109:26) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: 'cricbuzz-cricket.p.rapidapi.com'
+  }
+}
+
+TIme out
+  code: 'ETIMEDOUT',
+  
+  cause: Error: connect ETIMEDOUT 52.74.222.221:443
+      at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1247:16)
+  {
+    errno: -4039,
+    code: 'ETIMEDOUT',
+    syscall: 'connect',
+    address: '52.74.222.221',
+    port: 443
+  }
+}
+
+
+
+for not valid accesskey
+
+
+ code: 'ERR_BAD_REQUEST',
+    
+    data: { message: 'You are not subscribed to this API.' }
+  }
+}
+
+
+for not valid host name
+
+ code: 'ERR_BAD_REQUEST',
+    
+    data: {
+      messages: "The host you've provided is invalid. If you have difficulties, contact the RapidAPI 
+support team, support@rapidapi.com"
+    }
+  }
+}

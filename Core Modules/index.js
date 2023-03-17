@@ -19,7 +19,14 @@ const tls = require('tls');
 const path = require('path');
 const readline = require('readline');
 const net = require('net');
+<<<<<<< HEAD:index.js
 const http2 = require('http2');
+=======
+var StringDecoder = require('string_decoder').StringDecoder;
+var zlib = require('zlib');
+var util = require('util');
+var http2 = require('http2');
+>>>>>>> 3d44b28e0b4a7e7d89e42ef4e3ddc72e5f5db72d:Core Modules/index.js
 
 
 var logger = console.log
@@ -43,10 +50,21 @@ logger("Press 15 for Os Module".yellow);
 logger("Press 16 for vm Module".yellow);
 logger("Press 17 for TLS ".yellow);
 logger("Press 18 for path".yellow);
+<<<<<<< HEAD:index.js
 logger("Press 19 for QueryString Module").yellow;
 logger("Press 20 for Readline Module".yellow);
 logger("Press 21 for net Module".yellow);
 logger("Press 22 for Http2 Module".yellow)
+=======
+logger("Press 19 for QueryString Module".yellow);
+logger("Press 20 for Readline Module".yellow);
+logger("Press 21 for net Module".yellow);
+logger("Press 22 for String Decoder".yellow);
+logger("Press 23 for zlib".yellow);
+logger("Press 24 for Timer".yellow);
+logger("Press 25 for http2 Module".yellow);
+logger("Press 26 for Util Module".yellow);
+>>>>>>> 3d44b28e0b4a7e7d89e42ef4e3ddc72e5f5db72d:Core Modules/index.js
 logger("Press 0 for Exit".yellow);
 logger("*****************************".rainbow)
 
@@ -132,9 +150,29 @@ switch (Number(num)) {
     case 20:
         readlineTest();
         break;
-    
-    case 21 :
+
+    case 21:
         netTest();
+        break;
+
+    case 22:
+        StringDecoderTest();
+        break;
+
+    case 23:
+        zlibTest();
+        break;
+
+    case 24:
+        timerTest();
+        break;
+
+    case 25:
+        http2Test();
+        break;
+
+    case 26:
+        utilTest();
         break;
 
     case 0:
@@ -175,7 +213,6 @@ function fileSystem() {
     // }))
 
 }
-
 
 function httpModule() {
     const PORT = 3030;
@@ -420,8 +457,7 @@ function tlsTest() {
         });
     });
 
-    // Start listening on a specific port and address
-    // by using listen() method
+
     server.listen(PORT, HOST, function () {
         console.log("I'm listening at %s, on port %s", HOST, PORT);
     });
@@ -432,7 +468,7 @@ function tlsTest() {
 
         // Setting maximum send fragment limit
         // by using tlsSocket.setMaxSendFragment() method
-        value = client.setMaxSendFragment(16384);
+        value = client.setMaxSendFragment(16000);
 
         if (value)
             client.write("tls fragment is set");
@@ -471,11 +507,91 @@ function readlineTest() {
 
     myfile.on('line', function (line) {
         lineNo++;
-        console.log('Line Number '+lineNo+' : '+line);
+        console.log('Line Number ' + lineNo + ' : ' + line);
     })
 }
 
 function netTest() {
-    
-   console.log('i have created separate file for it !');
+
+    console.log('i have created separate file for it !');
 }
+
+function StringDecoderTest() {
+    var decode = new StringDecoder('utf8');
+     var buffer = Buffer('semicolon');
+    //var buffer = Buffer.from('semicolon is best packed with features packed with technology packed with security');
+
+    console.log(buffer);
+    console.log(decode.write(buffer));
+}
+
+function zlibTest() {
+
+    console.log('zlib called !');
+    var gzip = zlib.createGzip();
+    // var gzip = zlib.createInflate();
+    var read = fs.createReadStream('./try.js');
+    var write = fs.createWriteStream('./demo.js.gz');
+    read.pipe(gzip).pipe(write);
+
+    console.log('Zip file created !'.rainbow);
+}
+
+function timerTest() {
+    var myInt = setInterval(function () {
+        console.log("Hello Semicolon ; ".bgYellow.bold);
+    }, 500);
+}
+
+function http2Test() {
+
+    const session = http2.connect('https://www.youtube.com/')
+
+    // If there is any error in connecting, log it to the console
+    session.on('error', (err) => console.error(err.message))
+}
+
+function utilTest() {
+    // SET NODE_DEBUG=run-app*&&node index.js
+    //NODE_DEBUG=run-app* node index.js
+    const debugLog = util.debuglog('run-app');
+
+    // Use debuglog() method
+    debugLog('hello from my debugger [%d]', 123);
+    // SET NODE_DEBUG=run-app&&node util.js
+
+    // Another way to import debuglog
+    const { debuglog } = require('util');
+
+    const debuglogue = debuglog('run-app1');
+
+    // Use debuglog() method
+    debuglogue('hello from run-app [%d]', 123);
+
+    var a = "old Value";
+
+    let deebuglog = util.debuglog('run-app2',
+        (debuging) => {
+
+            // Replace with a logging function
+            // that optimizes out
+            a = "new Value";
+
+            // Testing if the section is enabled
+            deebuglog = debuging;
+        });
+
+    // prints the debuglog function
+    console.log(util.inspect(deebuglog,
+        showHidden = true, compact = true));
+
+    // Prints nothing
+    console.log(a);
+
+    // logs app *
+    deebuglog();
+
+    deebuglog('hi there, it\'s run-app [%d]', 2333);
+
+}
+
