@@ -16,11 +16,16 @@ const readNotes = function (ntitle) {
     console.log('reading Notes......'.green.bold);
 
     try {
+<<<<<<< HEAD:notes.js
         const Data = fs.readFileSync('./note.json', 'utf-8');
         var isAvailable = Data.includes(ntitle);
+=======
+        const rData = fs.readFileSync('./note.json', 'utf-8');
+        var isAvailable = rData.includes(title)
+>>>>>>> 3d44b28e0b4a7e7d89e42ef4e3ddc72e5f5db72d:Yargs-Commandline/notes.js
 
         if (isAvailable == true) {
-            const obj = JSON.parse(Data);
+            const obj = JSON.parse(rData);
 
             var arr = [];
             arr.push(obj)
@@ -28,13 +33,13 @@ const readNotes = function (ntitle) {
             function isTitle(playload) {
                 return playload.title === ntitle;
             }
-
+            debugger
             console.table(arr[0].find(isTitle))
         }
         else {
             console.log('Could not find '.yellow.bold + `${ntitle}`.red.inverse.bold + ' as Title'.yellow.bold);
             console.log('Please Enter valid Title'.red.bold);
-            console.info('Or Add New Notes by passing argument :'.green.bold+' add --title="<Your Title>" --body="<Your Body>"'.cyan.bold.inverse)
+            console.info('Or Add New Notes by passing argument :'.green.bold + ' add --title="<Your Title>" --body="<Your Body>"'.cyan.bold.inverse)
         }
     }
     catch (error) {
@@ -53,6 +58,7 @@ const readNotes = function (ntitle) {
 
 const addNotes = function (title, body) {
 
+    //console.time('Adding Notes ......')
     const note = loadNote();
 
     const findDuplicate = note.filter(
@@ -69,9 +75,10 @@ const addNotes = function (title, body) {
         })
 
         saveNotes(note);
+        // debugger
     }
     else {
-        console.log('Duplicate Data Found !!'.red.bold)
+        console.log('Duplicate Data Found !!'.red.bold.inverse)
     }
 
 }
@@ -85,6 +92,7 @@ const loadNote = function () {
         return JSON.parse(dataJson);
     }
     catch (e) {
+        console.log(e.message.red.bold);
         console.log('Could not find the file name !'.red.bold)
         return [];
     }
@@ -94,11 +102,15 @@ const loadNote = function () {
 const saveNotes = function (notes) {
 
     try {
-        console.log('File Creating .......'.green.bold);
-        console.log('Note writing ........'.green.bold);
+
+        console.time('File Creating .......'.green.bold);
+        console.time('Note writing ........'.green.bold);
         const objToJSON = JSON.stringify(notes);
         fs.writeFileSync('note.json', objToJSON);
-        console.log('Hurrey ! , Data Write Successfully :) '.yellow.bold);
+        console.timeEnd('File Creating .......'.green.bold);
+        console.timeEnd('Note writing ........'.green.bold);
+        console.log('Hurrey ! , Data Write Successfully :) '.rainbow);
+
     }
     catch (error) {
         console.log('Fail to write node in the fail !'.red.bold);
@@ -113,8 +125,9 @@ const saveNotes = function (notes) {
 
 const removeNotes = function (ntitle) {
 
-    console.log('Removing Notes......'.green.bold);
+
     try {
+        console.time('Removing Notes......'.green.bold);
         const readData = fs.readFileSync('./note.json', 'utf-8')
         const data = readData.includes(ntitle);
         var obj = JSON.parse(readData);
@@ -122,11 +135,14 @@ const removeNotes = function (ntitle) {
         if (data == true) {
             var arr = [];
             arr.push(obj);
-
+            console.time('Notes Removed !!'.red.bold)
             var finalData = arr[0].filter(rows => rows.title != ntitle)
-
+            console.timeEnd('Removing Notes......'.green.bold);
             fs.writeFileSync('note.json', JSON.stringify(finalData));
-            console.log('Notes Removed !!'.red.bold);
+            console.timeEnd('Notes Removed !!'.red.bold);
+
+            const remData = fs.readFileSync('./note.json', 'utf-8')
+            console.table(JSON.parse(remData))
 
         }
         else {
@@ -144,7 +160,6 @@ const removeNotes = function (ntitle) {
  * @returns `listNote` will return  available list of nodes details from file 
  */
 const listnotes = function () {
-    console.log('listing notes ......'.green.bold);
 
     try {
         const data = fs.readFileSync('./note.json')
@@ -156,7 +171,6 @@ const listnotes = function () {
         console.log(error.message.red);
         console.log('Fail to listing notes !'.red.bold);
     }
-
 }
 
 
